@@ -2,28 +2,30 @@ import styled from "styled-components"
 import axios from "axios"
 import { useEffect, useState } from "react"
 
+import Filme from "./Filme"
+
 export default function PaginaPrincipal() {
 
-    const [filmes, setFilmes] = useState([])
-
-    const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies"
+    const [filmes, setFilmes] = useState([]);
 
     useEffect(() => {
         const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
         const promises = axios.get(URL);
 
         promises.then((resp) => {
-            console.log(resp);
+            setFilmes(resp.data)
         })
     }, [])
+
+    console.log(filmes)
 
     return (
         <>
             <SelecioneFilme>
-                <h1>Selecione o Filme</h1>
+                <h1>Selecione o filme</h1>
             </SelecioneFilme>
             <WrapperFilmes>
-                {filmes.map(() => <Filme />)}
+                {filmes.map((f) => <Filme key={f.id} imgFilme={f.posterURL} idFilme={f.id}/>)}
             </WrapperFilmes>
         </>
     )
@@ -35,7 +37,7 @@ const SelecioneFilme = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: #FFFFFF;
     h1{
         font-family: 'Roboto';
         font-style: normal;
@@ -50,5 +52,6 @@ const SelecioneFilme = styled.div`
 const WrapperFilmes = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
+    justify-content: center;
+    gap: 35px;
 `

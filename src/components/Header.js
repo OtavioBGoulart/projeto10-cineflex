@@ -2,10 +2,9 @@ import styled from "styled-components"
 
 export default function Header () {
 
-    console.log("oi")
     return (
         <BarraMenu>
-            <h1>CineFlex</h1>
+            <h1>CINEFLEX</h1>
         </BarraMenu>
     )
 }
