@@ -3,8 +3,6 @@ import Horario from "./Horario";
 
 export default function DiaSessoes({ sessao }) {
 
-    console.log(sessao.showtimes);
-
     return (
         <>
            <DiaDaSemana><p>{sessao.weekday} - {sessao.date}</p></DiaDaSemana>

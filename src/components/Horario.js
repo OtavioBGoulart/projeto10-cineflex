@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Horario({ horario }) {
 
-    console.log(horario);
-
     return (
         <>
-            <Link to={`/assentos/:${horario.id}`}>
+            <Link to={`/assentos/:${horario.id}`} style={{textDecoration: "none"}}>
                 <CaixaHorario><p>{horario.name}</p></CaixaHorario>
             </Link>
         </>
@@ -20,9 +18,12 @@ const CaixaHorario = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-right: 15px; */
     background: #E8833A;
     border-radius: 3px;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(120%);
+    }
     p {
         font-family: 'Roboto';
         font-style: normal;
