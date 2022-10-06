@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./Header";
 import PaginaPrincipal from "./PaginaPrincipal";
-import SessoesFilme from "./SessoesFilme";
+import SessoesFilmePage from "./SessoesFilme";
+import AssentosPage from "./AssentosPage";
 
 
 export default function App() {
@@ -15,7 +16,8 @@ export default function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<PaginaPrincipal />} />
-                <Route path="/sessoes/:idFilme" element={<SessoesFilme />} />
+                <Route path="/sessoes/:idFilme" element={<SessoesFilmePage />} />
+                <Route path="/assentos/:idSessao" element={<AssentosPage />} />
             </Routes>
         </BrowserRouter>
     )
