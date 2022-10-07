@@ -17,7 +17,7 @@ export default function PaginaPrincipal() {
         })
     }, [])
 
-    console.log(filmes)
+    //console.log(filmes)
 
     return (
         <>

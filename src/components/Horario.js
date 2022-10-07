@@ -5,7 +5,7 @@ export default function Horario({ horario }) {
 
     return (
         <>
-            <Link to={`/assentos/:${horario.id}`} style={{textDecoration: "none"}}>
+            <Link to={`/assentos/${horario.id}`} style={{textDecoration: "none"}}>
                 <CaixaHorario><p>{horario.name}</p></CaixaHorario>
             </Link>
         </>
