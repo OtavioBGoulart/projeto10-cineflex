@@ -7,21 +7,25 @@ import Assento from "./Assento";
 import LegendaStatusAssentos from "./LegendaSatusAssentos";
 import CompraIngressos from "./CompraIngressos";
 
-export default function AssentosPage() {
+export default function AssentosPage({setReserva}) {
 
     const [statusAssento, setStatusAssento] = useState([]);
-    const [sessaoEscolhida, setSessaoEscolhida] = useState({})
+    const [sessaoEscolhida, setSessaoEscolhida] = useState({});
+    const [nome, setNome] = useState("");
+    const [CPF, setCPF] = useState("");
+    const [ids, setIds] = useState([])
     const { idSessao } = useParams();
-    //console.log(idSessao);
+    console.log(ids);
 
     useEffect(() => {
 
-        const URL = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`;
+        const URL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`;
         const promise = axios.get(URL);
 
         promise.then((res) => {
-            console.log(res.data);
+            //console.log(res.data);
             setStatusAssento(res.data.seats);
+            console.log(res.data.seats)
             setSessaoEscolhida({
                 img: res.data.movie.posterURL,
                 name: res.data.movie.title,
@@ -33,7 +37,7 @@ export default function AssentosPage() {
         promise.catch(() => alert("Deu ruim"))
     }, [idSessao])
 
-    console.log(sessaoEscolhida);
+    //console.log(sessaoEscolhida);
 
     return (
         <>
@@ -41,10 +45,10 @@ export default function AssentosPage() {
                 <h1>Selecione o assento</h1>
             </SelecioneAssento>
             <ListaAssentos>
-                {statusAssento.map((a) => <Assento key={a.id} id={a.id} numAssento={a.name} status={a.isAvailable} />)}
+                {statusAssento.map((a) => <Assento key={a.id} id={a.id} numAssento={a.name} status={a.isAvailable} ids={ids} setIds={setIds}/>)}
             </ListaAssentos>
             <LegendaStatusAssentos />
-            <CompraIngressos />
+            <CompraIngressos nome={nome} setNome={setNome} CPF={CPF} setCPF={setCPF} ids={ids} setIds={setIds} setReserva={setReserva}/>
             <RodapeAssentos>
                 <CaixaFilmeAssentos>
                     <img src={sessaoEscolhida.img} alt="sessão-escolhida" />

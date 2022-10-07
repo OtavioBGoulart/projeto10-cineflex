@@ -1,17 +1,49 @@
 import styled from "styled-components"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function CompraIngressos() {
+export default function CompraIngressos({nome, setNome, CPF, setCPF, ids, setIds}) {
+
+    const navigate = useNavigate()
+
+    function enviaReserva(e) {
+        e.preventDefault();
+
+        const URL = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many"
+        const body = {
+            ids: ids,
+            name: nome,
+            cpf: CPF
+        }
+
+        //console.log(body)
+
+        const promise = axios.post(URL, body);
+
+        promise.then((res) => {
+            // const infoReservas = {
+            //     movie:
+            //     date:
+            //     time: 
+            //     reserves: ids,
+            //     nome: nome,
+            //     cpf: CPF
+
+            // }
+            // navigate("/sucesso")
+        })
+    }
 
     return (
         <Formulario>
-            <form>
+            <form onSubmit={enviaReserva}>
                 <SessaoInput>
                     <label htmlFor="nome">Nome do comprador:</label>
-                    <input id="nome" name="nome" type="text" placeholder="Digite seu nome.." required></input>
+                    <input id="nome" name="nome" type="text" placeholder="Digite seu nome.." value={nome} onChange={((e) => setNome(e.target.value))} required></input>
                 </SessaoInput>
                 <SessaoInput>
                     <label htmlFor="CPF">CPF do comprador:</label>
-                    <input id="CPF" name="CPF" type="text" placeholder="Digite seu CPF..." required></input>
+                    <input id="CPF" name="CPF" type="text" placeholder="Digite seu CPF..." value={CPF} onChange={((e) => setCPF(e.target.value))} required></input>
                 </SessaoInput>
                 <CaixaBotao>
                     <button type="submit">Reservar Asento(s)</button>

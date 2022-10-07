@@ -9,10 +9,11 @@ export default function PaginaPrincipal() {
     const [filmes, setFilmes] = useState([]);
 
     useEffect(() => {
-        const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
+        const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies";
         const promises = axios.get(URL);
 
         promises.then((resp) => {
+            console.log(resp.data)
             setFilmes(resp.data)
         })
     }, [])

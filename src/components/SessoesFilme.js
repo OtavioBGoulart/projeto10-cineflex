@@ -9,11 +9,11 @@ export default function SessoesFilmePage() {
     const [sessoes, setSessoes] = useState([]);
     const [filmeEscolhido, setFilmeEscolhido] = useState({})
     const { idFilme } = useParams();
-    console.log(idFilme);
+    //console.log(idFilme);
     
     useEffect(() => {
 
-        const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`;
+        const URL = `https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`;
         const promise = axios.get(URL);
 
         promise.then((resp) => {

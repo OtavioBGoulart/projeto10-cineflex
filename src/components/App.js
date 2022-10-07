@@ -7,9 +7,13 @@ import PaginaPrincipal from "./PaginaPrincipal";
 import SessoesFilmePage from "./SessoesFilme";
 import AssentosPage from "./AssentosPage";
 import styled from "styled-components";
+import SucessoPage from "./SucessoPage";
+import { useState } from "react";
 
 
 export default function App() {
+
+    const [reserva, setReserva] = useState({})
 
     return (
         <BrowserRouter>
@@ -19,7 +23,8 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<PaginaPrincipal />} />
                     <Route path="/sessoes/:idFilme" element={<SessoesFilmePage />} />
-                    <Route path="/assentos/:idSessao" element={<AssentosPage />} />
+                    <Route path="/assentos/:idSessao" element={<AssentosPage setReserva={setReserva}/>} />
+                    <Route path="/sucesso" element={<SucessoPage />} />
                 </Routes>
             </ScreamContainer>
         </BrowserRouter>

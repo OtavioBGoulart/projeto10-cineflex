@@ -1,19 +1,20 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-export default function Assento({ id, numAssento, status }) {
+export default function Assento({ id, numAssento, status, ids, setIds }) {
 
     const [assentoLivre, setAssentoLivre] = useState("#C3CFD9")
 
     function reservarAssento() {
-        //console.log("oi")
 
         if (assentoLivre === "#C3CFD9") {
             setAssentoLivre("#1AAE9E");
-            //console.log("verde");
+            const reservaAssento = [...ids, id];
+            setIds(reservaAssento);
         } else {
             setAssentoLivre("#C3CFD9");
-            //console.log("cinza")
+            const removeReserva = ids.filter((i) => i !== id );
+            setIds(removeReserva);
         }
     }
 
