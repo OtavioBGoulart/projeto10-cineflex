@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Assento from "./Assento";
 import LegendaStatusAssentos from "./LegendaSatusAssentos";
+import CompraIngressos from "./CompraIngressos";
 
 export default function AssentosPage() {
 
@@ -43,6 +44,7 @@ export default function AssentosPage() {
                 {statusAssento.map((a) => <Assento key={a.id} id={a.id} numAssento={a.name} status={a.isAvailable} />)}
             </ListaAssentos>
             <LegendaStatusAssentos />
+            <CompraIngressos />
             <RodapeAssentos>
                 <CaixaFilmeAssentos>
                     <img src={sessaoEscolhida.img} alt="sessão-escolhida" />

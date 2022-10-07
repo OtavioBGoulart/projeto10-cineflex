@@ -41,4 +41,7 @@ const SecaoAssento = styled.div`
     border: 1px solid #808F9D;
     border-radius: 12px;
     box-sizing: border-box;
+    &:hover {
+        cursor: pointer;
+    }
 `
