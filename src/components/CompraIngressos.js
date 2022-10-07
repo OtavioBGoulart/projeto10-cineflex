@@ -2,12 +2,44 @@ import styled from "styled-components"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function CompraIngressos({nome, setNome, CPF, setCPF, ids, setIds}) {
+export default function CompraIngressos({nome, setNome, CPF, setCPF, ids, statusAssento, setReserva}) {
 
     const navigate = useNavigate()
 
     function enviaReserva(e) {
         e.preventDefault();
+
+        
+        const numAssentos = statusAssento.seats.filter((assento) => {
+
+            if (ids.includes(assento.id)) {
+                
+                return assento.name
+            } else {
+
+                return ""
+            }
+                
+        } )
+
+        //const assentosEscolhidos = numAssentos.map((a) => a.name)
+        //console.log(numAssentos)
+        let infoReservas;
+
+        if (statusAssento !== undefined) {
+
+                //console.log(statusAssento.seats);
+                //console.log(ids);
+                infoReservas = {
+                movie: statusAssento.movie.title,
+                date: statusAssento.day.date,
+                time: statusAssento.name,
+                reserves: numAssentos,
+                nome: nome,
+                cpf: CPF
+            }
+            setReserva(infoReservas)
+        }
 
         const URL = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many"
         const body = {
@@ -21,16 +53,7 @@ export default function CompraIngressos({nome, setNome, CPF, setCPF, ids, setIds
         const promise = axios.post(URL, body);
 
         promise.then((res) => {
-            // const infoReservas = {
-            //     movie:
-            //     date:
-            //     time: 
-            //     reserves: ids,
-            //     nome: nome,
-            //     cpf: CPF
-
-            // }
-            // navigate("/sucesso")
+            navigate("/sucesso")
         })
     }
 

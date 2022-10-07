@@ -15,7 +15,7 @@ export default function AssentosPage({setReserva}) {
     const [CPF, setCPF] = useState("");
     const [ids, setIds] = useState([])
     const { idSessao } = useParams();
-    console.log(ids);
+    //console.log(ids);
 
     useEffect(() => {
 
@@ -24,8 +24,8 @@ export default function AssentosPage({setReserva}) {
 
         promise.then((res) => {
             //console.log(res.data);
-            setStatusAssento(res.data.seats);
-            console.log(res.data.seats)
+            setStatusAssento(res.data);
+            console.log(res.data.movie.title)
             setSessaoEscolhida({
                 img: res.data.movie.posterURL,
                 name: res.data.movie.title,
@@ -39,16 +39,22 @@ export default function AssentosPage({setReserva}) {
 
     //console.log(sessaoEscolhida);
 
+    if (statusAssento.seats === undefined || sessaoEscolhida === undefined) {
+        return (
+            <div>CARREGANDO...</div>
+        )
+    }
+
     return (
         <>
             <SelecioneAssento>
                 <h1>Selecione o assento</h1>
             </SelecioneAssento>
             <ListaAssentos>
-                {statusAssento.map((a) => <Assento key={a.id} id={a.id} numAssento={a.name} status={a.isAvailable} ids={ids} setIds={setIds}/>)}
+                {statusAssento.seats.map((a) => <Assento key={a.id} id={a.id} numAssento={a.name} status={a.isAvailable} ids={ids} setIds={setIds}/>)}
             </ListaAssentos>
             <LegendaStatusAssentos />
-            <CompraIngressos nome={nome} setNome={setNome} CPF={CPF} setCPF={setCPF} ids={ids} setIds={setIds} setReserva={setReserva}/>
+            <CompraIngressos nome={nome} setNome={setNome} CPF={CPF} setCPF={setCPF} ids={ids} setIds={setIds} setReserva={setReserva} statusAssento={statusAssento} />
             <RodapeAssentos>
                 <CaixaFilmeAssentos>
                     <img src={sessaoEscolhida.img} alt="sessão-escolhida" />

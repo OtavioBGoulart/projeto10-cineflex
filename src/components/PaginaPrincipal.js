@@ -13,7 +13,6 @@ export default function PaginaPrincipal() {
         const promises = axios.get(URL);
 
         promises.then((resp) => {
-            console.log(resp.data)
             setFilmes(resp.data)
         })
     }, [])

@@ -24,7 +24,7 @@ export default function App() {
                     <Route path="/" element={<PaginaPrincipal />} />
                     <Route path="/sessoes/:idFilme" element={<SessoesFilmePage />} />
                     <Route path="/assentos/:idSessao" element={<AssentosPage setReserva={setReserva}/>} />
-                    <Route path="/sucesso" element={<SucessoPage />} />
+                    <Route path="/sucesso" element={<SucessoPage reserva={reserva} /> } />
                 </Routes>
             </ScreamContainer>
         </BrowserRouter>
