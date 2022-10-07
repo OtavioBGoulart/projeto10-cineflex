@@ -72,6 +72,7 @@ const CaixaBotao = styled.div`
             height: 42px;
             background: #E8833A;
             margin-top: 50px;
+            margin-bottom: 147px;
             border-radius: 3px;
             border: none;
 
