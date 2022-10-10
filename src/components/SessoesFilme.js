@@ -32,13 +32,13 @@ export default function SessoesFilmePage() {
                 <SelecioneHorario>
                     <h1>Selecione o Horário</h1>
                 </SelecioneHorario>
-                {sessoes.map((s) => <DiaSessoes key={s.id} sessao={s} />)}
+                {sessoes.map((s) => <DiaSessoes data-identifier="session-date" key={s.id} sessao={s} />)}
             </ContainerSessoes>
             <Rodape>
                 <CaixaFilme>
-                    <img src={filmeEscolhido.img} alt="filme-escolhido" />
+                    <img src={filmeEscolhido.img} alt="filme-escolhido" data-identifier="movie-img-preview" />
                 </CaixaFilme>
-                <h1>{filmeEscolhido.name}</h1>
+                <h1 data-identifier="movie-and-session-infos-preview">{filmeEscolhido.name}</h1>
             </Rodape>
         </>
     )

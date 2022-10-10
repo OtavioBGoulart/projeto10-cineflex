@@ -55,21 +55,23 @@ export default function CompraIngressos({nome, setNome, CPF, setCPF, ids, status
         promise.then((res) => {
             navigate("/sucesso")
         })
+
+        promise.catch(() => alert("Erro no reserva dos assentos, tente novamente"));
     }
 
     return (
         <Formulario>
             <form onSubmit={enviaReserva}>
-                <SessaoInput>
+                <SessaoInput data-identifier="buyer-name-input">
                     <label htmlFor="nome">Nome do comprador:</label>
                     <input id="nome" name="nome" type="text" placeholder="Digite seu nome.." value={nome} onChange={((e) => setNome(e.target.value))} required></input>
                 </SessaoInput>
-                <SessaoInput>
+                <SessaoInput data-identifier="buyer-cpf-input">
                     <label htmlFor="CPF">CPF do comprador:</label>
                     <input id="CPF" name="CPF" type="text" placeholder="Digite seu CPF..." value={CPF} onChange={((e) => setCPF(e.target.value))} required></input>
                 </SessaoInput>
                 <CaixaBotao>
-                    <button type="submit">Reservar Asento(s)</button>
+                    <button data-identifier="reservation-btn" type="submit">Reservar Asento(s)</button>
                 </CaixaBotao>
             </form>
         </Formulario>

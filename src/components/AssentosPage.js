@@ -51,15 +51,15 @@ export default function AssentosPage({setReserva}) {
                 <h1>Selecione o assento</h1>
             </SelecioneAssento>
             <ListaAssentos>
-                {statusAssento.seats.map((a) => <Assento key={a.id} id={a.id} numAssento={a.name} status={a.isAvailable} ids={ids} setIds={setIds}/>)}
+                {statusAssento.seats.map((a) => <Assento data-identifier="seat" key={a.id} id={a.id} numAssento={a.name} status={a.isAvailable} ids={ids} setIds={setIds}/>)}
             </ListaAssentos>
             <LegendaStatusAssentos />
             <CompraIngressos nome={nome} setNome={setNome} CPF={CPF} setCPF={setCPF} ids={ids} setIds={setIds} setReserva={setReserva} statusAssento={statusAssento} />
             <RodapeAssentos>
-                <CaixaFilmeAssentos>
+                <CaixaFilmeAssentos data-identifier="movie-img-preview">
                     <img src={sessaoEscolhida.img} alt="sessão-escolhida" />
                 </CaixaFilmeAssentos>
-                <Descricao>
+                <Descricao data-identifier="movie-and-session-infos-preview">
                 <h1>{sessaoEscolhida.name}</h1>
                 <h2>{sessaoEscolhida.weekday} - {sessaoEscolhida.time}</h2>
                 </Descricao>

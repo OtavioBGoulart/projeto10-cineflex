@@ -12,23 +12,23 @@ export default function SucessoPage({ reserva }) {
     return (
         <>
             <Sucesso><h1>Pedido feito com sucesso!</h1></Sucesso>
-            <FilmeEscolhido>
+            <FilmeEscolhido data-identifier="movie-session-infos-reserve-finished">
                 <h1>Filme e sessão</h1>
                 <p>{reserva.movie}</p>
                 <p>{reserva.date} {reserva.time}</p>
             </FilmeEscolhido>
-            <AssentosEscolhidos>
+            <AssentosEscolhidos data-identifier="seat-infos-reserve-finished">
                 <h1>Ingressos</h1>
                 {reserva.reserves.map((r) => <p key={r.id}>Assento: {r.name}</p>)}
             </AssentosEscolhidos>
-            <Comprador>
+            <Comprador data-identifier="buyer-infos-reserve-finished">
                 <h1>Comprador</h1>
                 <p>Nome: {reserva.nome}</p>
                 <p>CPF: {reserva.cpf}</p>
             </Comprador>
             <Link to={"/"} style={{ textDecoration: "none" }}>
                 <Voltar>
-                    <button>Voltar para Home</button>
+                    <button data-identifier="back-to-home-btn">Voltar para Home</button>
                 </Voltar>
             </Link>
         </>

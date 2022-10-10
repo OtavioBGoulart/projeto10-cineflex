@@ -25,7 +25,7 @@ export default function PaginaPrincipal() {
                 <h1>Selecione o filme</h1>
             </SelecioneFilme>
             <WrapperFilmes>
-                {filmes.map((f) => <Filme key={f.id} imgFilme={f.posterURL} idFilme={f.id}/>)}
+                {filmes.map((f) => <Filme data-identifier="movie-outdoor" key={f.id} imgFilme={f.posterURL} idFilme={f.id}/>)}
             </WrapperFilmes>
         </>
     )

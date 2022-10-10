@@ -4,15 +4,15 @@ export default function LegendaStatusAssentos() {
 
     return(
         <ContainerLabelStatus>
-            <Status>
+            <Status data-identifier="seat-selected-subtitle">
                 <div style={{backgroundColor: "#1AAE9E", border: "1px solid #0E7D71"}}></div>
                 <h1>Selecionado</h1>
             </Status>
-            <Status>
+            <Status data-identifier="seat-available-subtitle">
                 <div style={{backgroundColor: "#C3CFD9", border: "1px solid #808F9D"}}></div>
                 <h1>Disponível</h1>
             </Status>
-            <Status>
+            <Status data-identifier="seat-unavailable-subtitle">
                 <div style={{backgroundColor: "#FBE192", border: "1px solid #F7C52B"}}></div>
                 <h1>Indisponível</h1>
             </Status>

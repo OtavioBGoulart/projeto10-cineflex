@@ -7,7 +7,7 @@ export default function DiaSessoes({ sessao }) {
         <>
            <DiaDaSemana><p>{sessao.weekday} - {sessao.date}</p></DiaDaSemana>
            <Horarios>
-            {sessao.showtimes.map((horario) => <Horario key={horario.id} horario={horario}/> )}
+            {sessao.showtimes.map((horario) => <Horario data-identifier="hour-minute-btn" key={horario.id} horario={horario}/> )}
             </Horarios>
         </>
     )
